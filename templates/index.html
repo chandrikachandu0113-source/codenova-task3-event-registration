@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeNova Event Registration</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>CodeNova Events</h1>
+    <p>Discover events and register online</p>
+    <a href="{{ url_for('admin') }}">Admin Dashboard</a>
+</header>
+
+<main>
+
+    <h2>Upcoming Events</h2>
+
+    <div class="events-container">
+
+        {% for event in events %}
+
+        <div class="event-card">
+
+            <h3>{{ event.title }}</h3>
+
+            <p>{{ event.description }}</p>
+
+            <p><strong>Date:</strong> {{ event.event_date }}</p>
+
+            <p><strong>Location:</strong> {{ event.location }}</p>
+
+            <p>
+                <strong>Seats:</strong>
+                {{ event.capacity - event.registered }} available
+            </p>
+
+            {% if event.capacity > event.registered %}
+
+            <button onclick="openRegistration({{ event.id }}, {{ event.title | tojson }})">
+                Register Now
+            </button>
+
+            {% else %}
+
+            <button disabled>Fully Booked</button>
+
+            {% endif %}
+
+        </div>
+
+        {% else %}
+
+        <p>No upcoming events available.</p>
+
+        {% endfor %}
+
+    </div>
+
+    <section id="registration-section" hidden>
+
+        <h2>Register for Event</h2>
+
+        <p id="selected-event"></p>
+
+        <form id="registration-form">
+
+            <input type="hidden" id="event-id">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <button type="submit">Submit Registration</button>
+
+            <button type="button" onclick="closeRegistration()">Cancel</button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>CodeNova Full Stack Development Internship</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>

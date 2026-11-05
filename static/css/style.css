@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #4338ca, #7c3aed);
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+header a {
+    display: inline-block;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 10px 18px;
+    border-radius: 6px;
+}
+
+header a:hover {
+    background: white;
+    color: #4338ca;
+}
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.event-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.event-card h3 {
+    color: #4338ca;
+    font-size: 22px;
+}
+
+button {
+    background: #4338ca;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #312e81;
+}
+
+button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+#registration-section {
+    background: white;
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#registration-section[hidden] {
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 450px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: 2px solid #4338ca;
+    border-color: #4338ca;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #4338ca;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 10px;
+    }
+
+    header {
+        padding: 20px 10px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+}

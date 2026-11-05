@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Admin Dashboard</h1>
+    <a href="/">Back to Events</a>
+</header>
+
+<main>
+    <h2>Registered Participants</h2>
+
+    {% if registrations %}
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Event</th>
+                    <th>Event Date</th>
+                    <th>Registration Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for registration in registrations %}
+                <tr>
+                    <td>{{ registration.participant_name }}</td>
+                    <td>{{ registration.email }}</td>
+                    <td>{{ registration.title }}</td>
+                    <td>{{ registration.event_date }}</td>
+                    <td>{{ registration.registered_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p>No registrations yet.</p>
+    {% endif %}
+</main>
+
+</body>
+</html>
